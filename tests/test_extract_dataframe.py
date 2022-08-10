@@ -92,7 +92,8 @@ class TestTweetDfExtractor(unittest.TestCase):
 
 
     def test_find_screen_name(self):
-        name = <provide a list of the first five screen names>
+        name = ['DzCritical', 'toopsat', 'NassimaLilEmy',
+                'd_dhayae', 'Mohamme65404115']
         self.assertEqual(self.df.find_screen_name(), name)
 
     def test_find_followers_count(self):
