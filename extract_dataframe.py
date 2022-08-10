@@ -74,8 +74,10 @@ class TweetDfExtractor:
         return source
 
     def find_screen_name(self) -> list:
-        screen_name =
+        screen_name = [tweet['user']['screen_name']
+                       for tweet in self.tweets_list]
 
+        return screen_name
     def find_followers_count(self) -> list:
         followers_count =
 
