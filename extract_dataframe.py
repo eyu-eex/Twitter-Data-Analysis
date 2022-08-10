@@ -129,12 +129,14 @@ class TweetDfExtractor:
         return mentions_name
 
     def find_location(self) -> list:
-        try:
-            location = self.tweets_list['user']['location']
-        except TypeError:
-            location = ''
+        locations = []
+        for tweet in self.tweets_list:
+            try:
+                locations.append(tweet['user']['location'])
+            except TypeError:
+                locations.append('')
 
-        return location
+        return locations
 
     def get_tweet_df(self, save=False) -> pd.DataFrame:
         """required column to be generated you should be creative and add more features"""
