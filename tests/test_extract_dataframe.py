@@ -73,8 +73,12 @@ class TestTweetDfExtractor(unittest.TestCase):
         )
 
     def test_find_full_text(self):
-        text = <provide a list of the first five full texts>
-
+        text = ['#Pelosi airplane landed safely in #Taiwan 🇹🇼  \n1) - Both 🇨🇳 &amp;  🇺🇸 are playing "win win" on financial markets. 2) - Taiwan may be the future Asian   Cuba  3) - 🇺🇸 &amp; 🇨🇳 need an Asian #NATO / #5G\nWhat\'s your thoughts?',
+                "Watch the video of the beginning of the Chinese bombing of Taiwan during Pelosi visit from here : https://t.co/twah6WU4fZ\n\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\u0640\n#Pelosi #\u30de\u30c4\u30b3\u306e\u77e5\u3089\u306a\u3044\u4e16\u754c #Yediiklim #BadDecisionsTrailer1 #LawnBowls #\u795d_CALL119_MV900\u4e07\u56de #\u0e21\u0e32\u0e01\u0e2d\u0e14\u0e01\u0e31\u0e19\u0e19\u0e30\u0e0b\u0e35\u0e1e\u0e24\u0e01\u0e29\u0e4c https://t.co/m4CXfyZRS7",
+                "#Pelosi \n#Taipei \n#taiwan\n#XiJinping \n#China \nOn a verge of another war https://t.co/DuqDiSnWcd",
+                '#HOBIPALOOZA #LaAcademiaExpulsion #WEURO2022 #jhopeAtLollapalooza #SuzukiPakistan #Fantastico #Taiwan #breastfeeding #Kosovo #BORNPINK  strong ✍️💜 https://t.co/GtZeNL24rm',
+                '#Pelosi\n#china\nChina Time ✌️ https://t.co/tEDjzTlszu']
+        dd = self.df.find_full_text()
         self.assertEqual(self.df.find_full_text(), text)
 
     def test_find_sentiments(self):
