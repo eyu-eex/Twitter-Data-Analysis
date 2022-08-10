@@ -1,17 +1,33 @@
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join("")))
+from ntpath import join
 import unittest
 import pandas as pd
-import sys, os
-
-sys.path.append(os.path.abspath(os.path.join("../..")))
-
-from extract_dataframe import read_json
+import json
+from pathlib import Path
 from extract_dataframe import TweetDfExtractor
+from extract_dataframe import read_json
 
 # For unit testing the data reading and processing codes, 
 # we will need about 5 tweet samples. 
 # Create a sample not more than 10 tweets and place it in a json file.
 # Provide the path to the samples tweets file you created below
-sampletweetsjsonfile = ""   #put here the path to where you placed the file e.g. ./sampletweets.json. 
+sampletweetsjsonfile = "./tests/sample_africa_tweets.json"
+
+path = Path(sampletweetsjsonfile)
+file_exists = path.is_file()
+
+if not file_exists:
+    _, all_tweets_list = read_json("./data/africa_twitter_data.json")
+    tss = all_tweets_list[:10]
+    with open(sampletweetsjsonfile, 'a') as output_file:
+        for tweet in all_tweets_list[:10]:
+            output_file.write(json.dumps(tweet))
+            output_file.write("\n")
+
+    print('Sample tweets saved!')
+
 _, tweet_list = read_json(sampletweetsjsonfile)
 
 columns = [
@@ -53,7 +69,7 @@ class TestTweetDfExtractor(unittest.TestCase):
 
     def test_find_statuses_count(self):
         self.assertEqual(
-            self.df.find_statuses_count(), <provide a list of the first five status counts>
+            self.df.find_statuses_count(), [888, 1597, 2293, 44, 1313]
         )
 
     def test_find_full_text(self):
