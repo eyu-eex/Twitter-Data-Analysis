@@ -1,3 +1,4 @@
+import pandas as pd
 class Clean_Tweets:
     """
     The PEP8 Standard AMAZING!!!
@@ -19,10 +20,9 @@ class Clean_Tweets:
     def drop_duplicate(self, df:pd.DataFrame)->pd.DataFrame:
         """
         drop duplicate rows
-        """
-        
-        ---
-        
+        """        
+        df=df.drop_duplicates()
+
         return df
     def convert_to_datetime(self, df:pd.DataFrame)->pd.DataFrame:
         """
