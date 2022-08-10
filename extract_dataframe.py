@@ -43,7 +43,17 @@ class TweetDfExtractor:
         return statuses_count
 
     def find_full_text(self) -> list:
-        text =
+        full_text = []
+        for tweet in self.tweets_list:
+            # according to tweepy, if a text is truncated the 'text' attribute will be replaced by 'full_text' attribute
+            try:
+                full_text.append(tweet['full_text'])
+            except:
+                try:
+                    full_text.append(tweet['text'])
+                except:
+                    full_text.append('')
+        return full_text
 
     def find_sentiments(self, text) -> list:
 
